@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "mdx-talk",
+  "version": "2.3.2",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx && cp -r images dist/ ",
+    "help": "mdx-deck"
+  },
+  "devDependencies": {
+    "mdx-deck": "^2.3.2"
+  },
+  "dependencies": {
+    "prism-react-renderer": "^0.1.6",
+    "recharts": "^1.6.2",
+    "styled-components": "^4.2.0"
+  }
+}

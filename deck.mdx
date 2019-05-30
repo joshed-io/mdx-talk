@@ -1,0 +1,520 @@
+import { Head, Notes } from 'mdx-deck'
+import { Appear, MdxImage } from '@mdx-deck/components'
+import highlight from '@mdx-deck/themes/syntax-highlighter'
+import { yellow as mdxTheme } from '@mdx-deck/themes'
+import { Split } from '@mdx-deck/layouts'
+
+import colors from 'colors'
+import provider from 'components/provider'
+import Header from 'components/Header'
+import Image from 'components/image'
+import StackOverflowChart from 'components/stack-overflow-chart'
+
+export const theme = {
+  ...highlight,
+  ...provider,
+  ...mdxTheme,
+  css: {
+    padding: "0 15%"
+  },
+  font: 'Nunito, sans-serif',
+  googleFont: 'https://fonts.googleapis.com/css?family=Nunito:300,300i,700',
+  colors: {
+    text: colors.lightOrange,
+    link: colors.lightOrange,
+    code: colors.black,
+    background: colors.black
+  },
+  code: {
+  },
+  Slide: {
+    background: "url('/images/stars-2.jpg') no-repeat center center",
+    backgroundSize: "cover"
+  },
+  pre: {
+    fontSize: `28px`,
+    lineHeight: `42px`,
+    color: `#fff !important`
+  },
+  heading: {
+    position: `relative`,
+    zIndex: `1000`,
+    textTransform: `none`
+  },
+  metadata: {
+    author: `Josh Dzielak`,
+    twitter: `@dzello`,
+    hashtag: `#JAMstackParis`,
+    date: `May 28, 2019`
+  },
+}
+
+<Head>
+  <title>MDX, authors and richer JAMstack content</title>
+  <meta name='twitter:card' content='summary_large_image' />
+  <meta name='twitter:site' content='@dzello' />
+  <meta name='twitter:title' content='MDX, authors and richer JAMstack conten' />
+  <meta name='twitter:description' content='MDX is a new file format that lets markdown authors embed JSX components into their documents, greatly increasing the depth and scope of the documents they can build.' />
+  <meta name='twitter:image' content='https://mdx-talk.developermode.com/images/mdx-talk-title-slide.png' />
+  <meta property="og:title" content='MDX, authors and richer JAMstack content' />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content='https://mdx-talk.developermode.com/' />
+  <meta property="og:image" content='https://mdx-talk.developermode.com/images/mdx-talk-title-slide.png' />
+  <meta property="og:description" content='MDX is a new file format that lets markdown authors embed JSX components into their documents, greatly increasing the depth and scope of the documents they can build.' />
+  <link rel='shortcut icon' type='image/png' href='/images/favicon.ico'/>
+</Head>
+
+## MDX, authors and richer JAMstack content
+
+👨‍💻 Josh Dzielak<br/>
+
+May 28, 2019<br/>
+#JAMstackParis
+
+<Notes>
+Hello everyone! It's a great pleasure to be here. Thank you to Nicolas and Matthieu for putting this event together and Algolia for hosting us. Thank you Sarah and Devin for that awesome talk about the Algolia docs and Frontman.
+
+Tonight I'm going to talk about MDX, a file format that allows JAMstack authors to use JSX components inside of markdown, making it easier to create richer, more immersive and interactive content.
+</Notes>
+
+---
+
+<Image src="/images/josh-baguettes.jpg" css={{ height: `400px` }} />
+
+<Header>I'm Josh</Header>
+
+<Notes>
+First, a little about me. My name is Josh Dzielak.
+
+I'm a software engineer and developer advocate. I love helping developers learn about new technologies, tools and APIs, and generally helping them succeed with their projects. I moved to Paris last year after living for about 10 years in San Francisco. I'm really loving it here, as you might be able to tell from this photo of me at a boulangerie.
+
+Work-wise, I have been working at companies in the developer tools space since 2013.
+</Notes>
+
+---
+
+<Header>I've worked at</Header>
+
+<br/>
+
+<Image src="/images/algolia-logo.png" css={{ height: 75, position: 'relative' }} />
+
+<br/><br/>
+
+<Image src="/images/keen-io-logo.png" css={{ height: 75, position: 'relative' }} />
+
+<Notes>
+In the past I was the VP engineering at Keen IO building an analytics API, and after that I worked right here at Algolia as the lead for developer relations. Many developers use Algolia to power the search on their JAMstack sites, and Algolia is where I started to really get excited about the potential of the JAMstack for building faster and more secure websites.
+
+Today, I am the co-founder of a company called DeveloperMode.
+</Notes>
+
+---
+
+<Header>Currently building</Header>
+
+<br/>
+
+<Image src="/images/developermode-logo.png" css={{ height: 50, position: 'relative' }} />
+
+<Notes>
+DeveloperMode provides services to companies who build tools for developers. We advise on developer relations strategy and we also build content, demos and open source projects.  
+
+Obviously since I am a developer advocate I have DeveloperMode command prompt stickers, so come find me after the talk and I'll be happy to give you one.
+</Notes>
+
+---
+
+<Header>Client project using MDX</Header>
+
+<Image src="https://res.cloudinary.com/dzello/video/upload/e_loop:99/v1559049863/developermode/mdx-talk/awesome-stacks-scrolling.gif" />
+
+<Notes>
+So, in April we released a project called Awesome Stacks for our client StackShare, which is built with the JAMstack and this is how I first starting using MDX.
+
+Awesome Stacks is an open source collection of tech stacks, starter kits and boilerplates that anyone can contribute to, following along the awesome list tradition. All the data lives in a README file on GitHub. 
+</Notes>
+
+---
+
+<Header>GitHub README data source</Header>
+
+<Image src="/images/awesome-stacks-graphcms-github.png" css={{ width: '1000px' }} />
+
+<Notes>
+This is what a stack looks like in the README file. This one is for a stack with GraphCMS, Create React App, and Apollo.
+
+The project doesn't end with GitHub though, there is also a companion website called awesomestacks.dev.
+</Notes>
+
+---
+
+<Header>Site: awesomestacks.dev</Header>
+
+<Image src="https://res.cloudinary.com/dzello/video/upload/e_loop:99/v1559050131/developermode/mdx-talk/awesome-stacks-site-scrolling.gif" css={{ }} />
+
+<Notes>
+At build-time the README markdown file is parsed and turned into Gatsby source nodes, which are used as data to build this site. Each stack gets its own page with tiles for the tools that are in that stack. Each tool includes information, stats and links that are fetched from the GitHub and StackShare GraphQL APIs at build time.
+
+Ultimately we want to have a blog on the site that includes these tool tiles, and MDX is what we'll be using.
+</Notes>
+
+---
+
+<Header>GitHub MDX component</Header>
+
+```text
+import GitHub from "./components/GitHub"
+
+# This is a markdown header
+
+Below is a JSX component named "GitHub".
+
+<GitHub name="apollographql/apollo-client">
+  A fully-featured, production ready caching GraphQL client
+</GitHub>
+```
+
+<Notes>
+  
+This is what an MDX file looks like - a combination of markdown and JSX syntax. The JSX component is named GitHub and it is imported from the project. This is just JSX, but living in markdown file instead of a JavaScript file. We can use it to add dynamic and diverse items to our content, and break up those long walls of text.
+
+I know I've thrown a lot at you so far, but I wanted to show you a real world example with MDX first. Now, let's dive into what MDX is technically-speaking and then we'll use it to create something together.
+</Notes>
+
+---
+
+<Header>MDX: Markdown for the component era</Header>
+
+<Image src="/images/mdx-logo.png" css={{  }} />
+
+<Notes>
+MDX describes itself as "JSX in markdown for ambitious projects". It is simultaneously a file format, parser and loader that extracts and renders JSX components inside of markdown.
+</Notes>
+
+---
+
+<Split>
+
+<Image src="/images/zeit-mdx-announce.png" css={{ width: "400px" }} />
+
+- Debut: April 2018
+- 1.0: April 2019
+
+</Split>
+
+<Notes>
+Created by John Otander, currently a software engineer at Gatsby, MDX was announced in April 2018 at Zeit Day and just hit it's 1.0 this April. As of today, it has 7,200 stars on GitHub and is growing fast.
+</Notes>
+
+---
+
+<Header>Integrates with</Header>
+
+<Image src="/images/mdx-integrations.png" css={{  }} />
+
+<Notes>
+MDX has official plugins for Next.js, Gatsby, Create React App and more - though it can be also used in any JavaScript project with a bundler. Everything happens at build-time, not runtime, so there's no performance overhead.
+
+The way I like to think about MDX is that it allows you to make your JavaScript components visible to your content authoring tools, like a bridge between the two. Now, let's write some MDX.
+</Notes>
+
+---
+
+<Header>Learn MDX by doing</Header>
+
+Let's write a blog post!
+
+<Notes>
+I want you to imagine that you have been asked to write a blog post on your company blog. The topic is the rising number of developers contributing to open source. The blog is built with the JAMstack, of course, and markdown is your primary authoring tool.
+</Notes>
+
+---
+
+<Header>Start with markdown</Header>
+
+```markdown
+# Developers writing open source
+
+More developers than ever are contributing to
+open source as a part of their jobs.
+```
+
+<Notes>
+To get started, you write this markdown.
+
+Your vision for the article isn't just text though. You want to include some visually appealing data, ideally shown in a chart or a graph. You know you can get some data from StackOverflow's excellent annual developer survey, and if you you happen to be a developer, you know how to make charts in JavaScript, or at least find a library that does.
+
+But how do you get charts in markdown? There's no markdown syntax for making charts. This is where MDX comes in handy.
+</Notes>
+
+---
+
+<Header>Add some MDX</Header>
+
+```jsx
+import StackOverflowChart from "./components/StackOverflowChart"
+
+# Developers writing open source
+
+More developers than ever are contributing to
+open source as a part of their jobs.
+
+<StackOverflowChart />
+```
+
+<Notes>
+With MDX, we can import a component for our chart and embed it right in the markdown. That's what we're doing here with the StackOverflowChart JSX tag at the bottom.
+
+So, how could we build this StackOverflowChart component?
+</Notes>
+
+---
+
+```jsx
+import { BarChart, Bar, ... } from 'recharts';
+
+const data = [{ name: '2017', percent: 33 }, ...];
+
+const StackOverflowChart = () => (
+  <BarChart width={800} height={300} data={data}>
+    <CartesianGrid stroke="#fff" />
+    <XAxis dataKey="name" />
+    <YAxis />
+    <Bar dataKey="percent" fill="#82ca9d" />
+  </BarChart>
+);
+
+export default StackOverflowChart
+```
+
+<Notes>
+First, we import some classes from the excellent Recharts charting library for React, which I will have chosen and added to my package.json. Then we set up the data, which are the percentages of developers who report to have contributed to open source in a given year according to the StackOverflow survey. Then we set up the chart using classes from Recharts.
+
+Here's what it looks like when our MDX blog post is rendered.
+</Notes>
+
+---
+
+### Developers writing open source
+
+More developers than ever are contributing to open source as a part of their jobs.
+
+<StackOverflowChart />
+
+<Notes>
+Here it is. You can see the header and paragraph are from the markdown, as well as the rendered chart right after. Just imagine the formatting is a bit more blog post like, but you should get the idea.
+</Notes>
+
+---
+
+<Image src="/images/mdx-deck.png" css={{  }} />
+
+*Warning: This presentation is written with MDX deck. All component renders are real.*
+
+<Notes>
+By the way, you're actually seeing this rendering happen for real right now. This presentation is written using mdx-deck, which makes it possible to build slide decks with MDX.
+
+So that last example is nice if we just need to make one chart, but what if we need several charts? Even better, what if we want to make it easy for anyone on the team to create charts of different types? That's easy enough with MDX, because we can pass properties to our components.
+</Notes>
+
+---
+
+<Header>Reusable component</Header>
+
+```jsx
+import ColumnChart from "./components/ColumnChart"
+
+# Developers writing open source
+
+More developers than ever are contributing to
+open source as a part of their jobs.
+
+<ColumnChart xAxis={['2017', '2018', '2019']} 
+             yAxis={['33%', '56%', '65%']} />
+```
+
+<Notes>
+Here's our blog post again, but instead of StackOverflowChart we have ColumnChart, which takes two properties for the x and y-axis values. Now more ColumnCharts can be added to the blog post, each with different data. We could expose more props if we needed.
+
+Here we've lowered the level of abstraction to give some flexibility, but not too much.
+It's important that we don't make our MDX component interfaces too complex. 
+</Notes>
+
+---
+
+> MDX components should have a level of abstraction that balances power and usability by authors.
+
+<Notes>
+Exposing too much complexity makes the MDX component hard to learn and remember how to use. Exposing too little may be limiting to the author, who could run into a wall and not have an escape hatch.
+
+I'll show one example to illustrate good MDX component design, involving design systems. Giving authors safe access to design systems is actually a pretty good use case for MDX.
+</Notes>
+
+---
+
+“[MDX is] extremely useful for using design system components to render markdown and weaving interactive components in with existing markdown.”
+
+— @chrisbiscardi
+
+<Notes>
+This quote is from Chris Biscardi, who among other things maintains the MDX integration for Gatsby.
+
+// Read the quote
+</Notes>
+
+---
+
+<Header>MDX for design systems</Header>
+
+```jsx
+# Developers writing open source
+
+More developers than ever are contributing to
+open source as a part of their jobs.
+
+<Panel color="primary">
+  <ColumnChart xAxis={['2017', '2018', '2019']} 
+               yAxis={['33', '56', '65']} />
+</Panel>
+```
+
+<Notes>
+This is the same example as before, but we're wrapping our ColumnChart in another MDX component called Panel. A Panel is a common component in design systems, and we could be using it here to visually make our chart stand out.
+
+As you can see, MDX allows you to nest and compose components, which is very useful. You'll notice there's no import statements anymore either, which isn't just to save space on the slide. MDX allows you to bind components to a global scope so they can be used without being imported - this is great for non-developer authors.
+
+Back to the design system idea and the Panel. How would we add a Panel without MDX?
+</Notes>
+
+---
+
+```html
+<div class="panel has-background-primary">
+  <div class="panel-content">
+    Panel content goes here.
+  </div>
+</div>
+```
+
+Without MDX = verbose, tight coupling
+
+<Notes>
+Probably using just HTML, which has drawbacks. First, it's tightly coupled to the underlying HTML and CSS - if that changed, we'd have to change content files, which is annoying. Secondly, writing HTML manually requires knowledge of the design system, which isn't something that authors should be expected to have.
+
+How can we improve this?
+</Notes>
+
+---
+
+```html
+<Panel color="primary">
+  Panel content goes here.
+</Panel>
+```
+
+With MDX = simpler & better encapsulated
+
+<Notes>
+This version with MDX is much cleaner. We can abstract away the actual markup and only accept properties that we want to the author to have control over.
+
+The author's experience is better too - there's less to write and less risk of making a mistake.
+
+To me, the opportunity to improve the authoring experience is why I'm so excited about MDX, but I'm not alone. John Otander, one of the creators of MDX, had the inspiration to create an "authorable format" for the JAMstack. He describes it this way:
+</Notes>
+
+---
+
+"What I mean by **authorable** is that it's a format that can be naturally written in by all members of a cross-functional team after some learning - from engineering to marketing."
+
+— John Otander
+
+<Notes>
+I think this is a critical time for JAMstack developers to be thinking about cross-functional teams and authorability. For two reasons.
+</Notes>
+
+---
+
+<Header>Why JAMstack authorability now?</Header>
+
+Visual storytelling & the New York Times
+
+<Notes>
+First, the content is getter more and more advanced. Think about the interactive visualizations and visual storytelling you see on publications likes the New York Times. That's the future. Authors will need a way to use and customize those things, they can't always be going to the developers.
+</Notes>
+
+---
+
+<Header>Why JAMstack authorability now?</Header>
+
+For mass adoption, JAMstack needs to win over authors
+
+<Notes>
+Secondly, the JAMstack is not just a thing for developers anymore. It's a viable stack for replacing legacy tools and CMS. If its destiny is to overthrow legacy CMS, it needs to have the support of authors and stakeholders, as well as developers. Authors using tools like WordPress have a ton of experience and power at their fingertips - they can do a lot without having a call a developer. The same needs to be true for the JAMstack.
+</Notes>
+
+---
+
+<Header>Authorable documentation</Header>
+
+Docs are complex
+
+<Notes>
+One place where it's easy to see the role of authorability today is in developer documentation. You heard from Sarah and Devin about the complexity of the Algolia documentation and the breadth of skills that exist in the team that supports it.
+
+If the author's experience is bad, like having to wait for really long builds, it has a real impact on how fast the team can move.
+</Notes>
+
+---
+
+<Image src="/images/algolia-docs.png" css={{  }} />
+
+<Notes>
+As you can see from the Algolia example, developer documentation today is much more than just text and API references. There are widgets for things like language-specific code snippets, interactive code examples, navigation helpers, tool tips, and more. Good docs mix these elements wisely, to keep the docs feeling alive and providing the most value to the developers using them.
+
+Of course, not every team has the resources or need to solve the docs problem at Algolia scale, and for those projects and teams MDX can be a pretty good fit for docs. There are already some promising MDX-related projects in the docs space.
+</Notes>
+
+---
+
+<Header>docz</Header>
+
+<Image src="/images/docz-screenshot.png" css={{  }} />
+
+<Notes>
+One is a popular open source project called docz, created by Pedro Nauck. docz describes itself as zero-config and pluggable, and it also has TypeScript support. Best of all, it comes with some built in MDX components like this one, which is an interactive code playground.
+</Notes>
+
+---
+
+<Header>mdx-docs</Header>
+
+<Image src="/images/mdx-docs.png" css={{  }} />
+
+<Notes>
+Another project is called mdx-docs, created by Brent Jackson from Gatsby. It features live editing support via react-live, and is built on top of Next.js.
+</Notes>
+
+---
+
+<Header>Links</Header>
+
+- mdxjs.com
+- mdx-deck.jxnblk.com
+- recharts.org
+- docz.site
+- mdx-docs.now.sh
+
+<Notes>
+I've talked about quite a few projects today, so here are a few links to check out. I will post my slides after the talk, which will contain links.
+
+So that's pretty much all I have to say. I hope you've gotten a good idea of what MDX is and what you can build with it. I hope I've also helped you think about the JAMstack authors out there, especially the ones who aren't developers, and the ways that you can empower them to make truly awesome stuff.
+</Notes>
+
+---
+
+# Thank you! 🙇‍♂️
+
+<Notes>
+Last but not least, I want to again thank our organizers Nicolas and Matthieu and our hosts Algolia. I want to thank all of you for listening and being a fantastic audience. I'll be happy to answer questions if there are any. Thank you!
+</Notes>
