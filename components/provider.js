@@ -1,5 +1,4 @@
 import React from 'react'
-import BackgroundImage from './background-image'
 import Footer from './footer'
 
 const Provider = ({ children, theme, index, slides }) => (

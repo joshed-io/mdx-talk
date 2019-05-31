@@ -97,11 +97,11 @@ Work-wise, I have been working at companies in the developer tools space since 2
 
 <br/>
 
-<Image src="/images/algolia-logo.png" css={{ height: 75, position: 'relative' }} />
+<Image src="/images/algolia-logo.png" css={{ height: 75 }} />
 
 <br/><br/>
 
-<Image src="/images/keen-io-logo.png" css={{ height: 75, position: 'relative' }} />
+<Image src="/images/keen-io-logo.png" css={{ height: 75 }} />
 
 <Notes>
 In the past I was the VP engineering at Keen IO building an analytics API, and after that I worked right here at Algolia as the lead for developer relations. Many developers use Algolia to power the search on their JAMstack sites, and Algolia is where I started to really get excited about the potential of the JAMstack for building faster and more secure websites.
@@ -115,7 +115,7 @@ Today, I am the co-founder of a company called DeveloperMode.
 
 <br/>
 
-<Image src="/images/developermode-logo.png" css={{ height: 50, position: 'relative' }} />
+<Image src="/images/developermode-logo.png" css={{ height: 50 }} />
 
 <Notes>
 DeveloperMode provides services to companies who build tools for developers. We advise on developer relations strategy and we also build content, demos and open source projects.  
@@ -127,7 +127,7 @@ Obviously since I am a developer advocate I have DeveloperMode command prompt st
 
 <Header>Client project using MDX</Header>
 
-<Image src="https://res.cloudinary.com/dzello/video/upload/e_loop:99/v1559049863/developermode/mdx-talk/awesome-stacks-scrolling.gif" />
+<Image src="/images/awesome-stacks-scrolling.gif" />
 
 <Notes>
 So, in April we released a project called Awesome Stacks for our client StackShare, which is built with the JAMstack and this is how I first starting using MDX.
@@ -139,7 +139,7 @@ Awesome Stacks is an open source collection of tech stacks, starter kits and boi
 
 <Header>GitHub README data source</Header>
 
-<Image src="/images/awesome-stacks-graphcms-github.png" css={{ width: '1000px' }} />
+<Image src="/images/awesome-stacks-graphcms-github.png" />
 
 <Notes>
 This is what a stack looks like in the README file. This one is for a stack with GraphCMS, Create React App, and Apollo.
@@ -151,7 +151,7 @@ The project doesn't end with GitHub though, there is also a companion website ca
 
 <Header>Site: awesomestacks.dev</Header>
 
-<Image src="https://res.cloudinary.com/dzello/video/upload/e_loop:99/v1559050131/developermode/mdx-talk/awesome-stacks-site-scrolling.gif" css={{ }} />
+<Image src="/images/awesome-stacks-site-scrolling.gif" />
 
 <Notes>
 At build-time the README markdown file is parsed and turned into Gatsby source nodes, which are used as data to build this site. Each stack gets its own page with tiles for the tools that are in that stack. Each tool includes information, stats and links that are fetched from the GitHub and StackShare GraphQL APIs at build time.
@@ -186,7 +186,7 @@ I know I've thrown a lot at you so far, but I wanted to show you a real world ex
 
 <Header>MDX: Markdown for the component era</Header>
 
-<Image src="/images/mdx-logo.png" css={{  }} />
+<Image src="/images/mdx-logo.png" />
 
 <Notes>
 MDX describes itself as "JSX in markdown for ambitious projects". It is simultaneously a file format, parser and loader that extracts and renders JSX components inside of markdown.
@@ -196,10 +196,11 @@ MDX describes itself as "JSX in markdown for ambitious projects". It is simultan
 
 <Split>
 
-<Image src="/images/zeit-mdx-announce.png" css={{ width: "400px" }} />
+<Image src="/images/zeit-mdx-announce.png" />
 
-- Debut: April 2018
-- 1.0: April 2019
+**Debut**<br/>April 2018
+
+**1.0 release**<br/>April 2019
 
 </Split>
 
@@ -211,7 +212,19 @@ Created by John Otander, currently a software engineer at Gatsby, MDX was announ
 
 <Header>Integrates with</Header>
 
-<Image src="/images/mdx-integrations.png" css={{  }} />
+<Split>
+<div style={{ textAlign: "left" }}>
+Next.js<br/>
+Gatsby<br/>
+Create React App<br/>
+React Static
+</div>
+<div style={{ textAlign: "right" }}>
+Webpack<br/>
+Parcel<br/>
+Zero
+</div>
+</Split>
 
 <Notes>
 MDX has official plugins for Next.js, Gatsby, Create React App and more - though it can be also used in any JavaScript project with a bundler. Everything happens at build-time, not runtime, so there's no performance overhead.
@@ -250,7 +263,7 @@ But how do you get charts in markdown? There's no markdown syntax for making cha
 
 ---
 
-<Header>Add some MDX</Header>
+<Header>Add some JSX</Header>
 
 ```jsx
 import StackOverflowChart from "./components/StackOverflowChart"
@@ -308,7 +321,7 @@ Here it is. You can see the header and paragraph are from the markdown, as well 
 
 ---
 
-<Image src="/images/mdx-deck.png" css={{  }} />
+<Image src="/images/mdx-deck.png" />
 
 *Warning: This presentation is written with MDX deck. All component renders are real.*
 
@@ -467,7 +480,7 @@ If the author's experience is bad, like having to wait for really long builds, i
 
 ---
 
-<Image src="/images/algolia-docs.png" css={{  }} />
+<Image src="/images/algolia-docs.png" />
 
 <Notes>
 As you can see from the Algolia example, developer documentation today is much more than just text and API references. There are widgets for things like language-specific code snippets, interactive code examples, navigation helpers, tool tips, and more. Good docs mix these elements wisely, to keep the docs feeling alive and providing the most value to the developers using them.
@@ -479,7 +492,7 @@ Of course, not every team has the resources or need to solve the docs problem at
 
 <Header>docz</Header>
 
-<Image src="/images/docz-screenshot.png" css={{  }} />
+<Image src="/images/docz-screenshot.png" />
 
 <Notes>
 One is a popular open source project called docz, created by Pedro Nauck. docz describes itself as zero-config and pluggable, and it also has TypeScript support. Best of all, it comes with some built in MDX components like this one, which is an interactive code playground.
@@ -489,7 +502,7 @@ One is a popular open source project called docz, created by Pedro Nauck. docz d
 
 <Header>mdx-docs</Header>
 
-<Image src="/images/mdx-docs.png" css={{  }} />
+<Image src="/images/mdx-docs.png" />
 
 <Notes>
 Another project is called mdx-docs, created by Brent Jackson from Gatsby. It features live editing support via react-live, and is built on top of Next.js.

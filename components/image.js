@@ -5,7 +5,7 @@ const Image = ({ src, css }) => (
     src={src}
     css={{
       ...{
-        // position: 'absolute',
+        width: '100%'
       }, ...css
     }} />
 )
