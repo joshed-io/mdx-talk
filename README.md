@@ -4,6 +4,8 @@
 
 A talk given at JAMStack Paris on May 28, 2019. View the [slides here](https://mdx-talk.developermode.com/).
 
+**📽️ Watch the [video](https://www.youtube.com/watch?v=9FGAwXOE6Y4)**
+
 Built with [mdx-deck](https://github.com/jxnblk/mdx-deck).
 
 ## Thanks to
