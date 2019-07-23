@@ -14,3 +14,7 @@ Built with [MDX Deck](https://github.com/jxnblk/mdx-deck).
 - [John Otander](https://github.com/johno) and the team behind [MDX](https://github.com/mdx-js/mdx)
 - [JAMstack Paris](https://jamstack.paris/) for inviting me to speak
 - [Netlify](https://netlify.com/) for hosting the slides
+
+# Photos
+
+[![Josh Dzielak giving the talk](https://res.cloudinary.com/dzello/image/upload/v1563885458/developermode/josh-dzielak-jamstack-paris-2019.png)](https://mdx-fairy-tale.developermode.com/)
